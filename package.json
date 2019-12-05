@@ -1,0 +1,29 @@
+{
+  "name": "bars-support-system",
+  "version": "0.0.1",
+  "description": "a support system to compile bars-based performance appraisal. Done for the completion of ii4021-decision support system course.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "m-vd",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13",
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-vd/bars-support-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/m-vd/bars-support-system/issues"
+  },
+  "homepage": "https://github.com/m-vd/bars-support-system#readme"
+}

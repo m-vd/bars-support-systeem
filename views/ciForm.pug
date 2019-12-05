@@ -1,0 +1,28 @@
+include partials/header.pug
+
+
+.container.mt-5
+    form(action="/ci" method="POST")
+        .form-group
+            select#select-role.form-control(name="role")
+                each role in roles
+                    option(value=role.name) #{role.name}
+                option ... add new role
+        #add-role.form-group
+
+        .form-group
+            input.form-control(type="text" name="newCI" placeholder="add new CI")
+        button.btn.btn-primary(type="submit") Submit
+
+script.
+    $("#select-role").change(function() {
+        if ($("#select-role option:selected").text() === "... add new role"){
+            $("#add-role").html('<input class="form-control" type="text" name="role" placeholder="add new role">');
+            $("#select-role").attr('name', '');
+        } else {
+            $("#add-role").html('');
+        }
+    }).trigger("change")
+
+
+include partials/footer.pug
