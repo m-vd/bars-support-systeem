@@ -6,28 +6,25 @@ const CriticalIndicator = require('../models/criticalIndicator');
 
 router.get("/", (req, res) => {
 
-    Role.find({}).populate().exec((err, existing_roles) => {
+    Role.find({}, (err, foundRoles) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("ciForm", { roles: existing_roles })
+            res.render("ciForm", { roles: foundRoles })
         }
     })
 
 })
 
 router.post("/", (req, res) => {
-    console.log(req)
-
     role = req.body.role
     newCI = req.body.newCI
 
-
-    Role.findOne({ name: role }).populate().exec((err, existing_role) => {
+    Role.findOne({ name: role }, (err, foundRole) => {
         if (err) {
             console.log(err);
         } else {
-            if (!existing_role) {
+            if (!foundRole) {
                 var new_role = {
                     name: role
                 }
@@ -35,15 +32,15 @@ router.post("/", (req, res) => {
                     if (err) {
                         console.log(err);
                     }
-                    existing_role = newlyCreatedRole;
+                    foundRole = newlyCreatedRole;
                 })
             }
             CriticalIndicator.create({ description: newCI }, (err, newlyCreatedCI) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    existing_role.criticalIndicator.push(newlyCreatedCI);
-                    existing_role.save()
+                    foundRole.criticalIndicator.push(newlyCreatedCI);
+                    foundRole.save()
                 }
             })
         }

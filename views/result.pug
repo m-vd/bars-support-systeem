@@ -9,18 +9,24 @@ include partials/header.pug
             tr.theader
                 th Critical Indicator
                 th Performance Dimension
-                th Scale
+                th Standard Deviation
+                th Accepted
         tbody
             each role in all 
                 each ci in role.criticalIndicator
                     each pd in ci.performanceDimension
                         tr(class = "tr-" + role.name.replace(/ /g,''))
-                            td #{ci.description} 
-                            td #{pd.description}
-                            td 
-                                form.form-inline(action=("/pd/"+pd._id) method="POST")
-                                    input.form-control.p-2(type='number' min="1" max="7" name='scale' required)
-                                    button.btn.btn-primary.ml-2(type="submit") Submit
+                            if (pd.arrayOfScale.length > 1)
+                                td #{ci.description} 
+                                td #{pd.description}
+                                td #{math.round(math.std(pd.arrayOfScale), 3)}
+                                if (math.round(math.std(pd.arrayOfScale), 3) > 1.5)
+                                    td.alert.alert-danger not accepted
+                                else 
+                                    td.alert.alert-success accepted
+
+
+                                
             
 script.
     $("#select-role").change(function() {

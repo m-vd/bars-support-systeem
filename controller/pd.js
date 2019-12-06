@@ -4,7 +4,6 @@ const router = express.Router();
 const CriticalIndicator = require('../models/criticalIndicator');
 const PerformanceDimension = require('../models/performanceDimension')
 
-
 router.get("/", (req, res) => {
     CriticalIndicator.find({}).populate().exec((err, existingCIs) => {
         if (err) {
@@ -42,5 +41,19 @@ router.post("/", (req, res) => {
     })
     res.redirect("/")
 })
+
+router.post("/:id", (req, res) => {
+    console.log(req.body)
+    PerformanceDimension.findById(req.params.id, (err, foundPD) => {
+        if (err) {
+            console.log(err);
+        } else {
+            foundPD.arrayOfScale.push(req.body.scale);
+            foundPD.save();
+        }
+    })
+    res.redirect('back')
+})
+
 
 module.exports = router;

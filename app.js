@@ -6,7 +6,8 @@ const mongoose = require('mongoose')
 const indexRoutes = require('./controller/index');
 const ciRoutes = require('./controller/ci');
 const pdRoutes = require('./controller/pd');
-const evalRoutes = require('./controller/eval')
+const evalRoutes = require('./controller/eval');
+const resultRoutes = require('./controller/result');
 
 mongoose.connect(process.env.database_uri || "mongodb://localhost/bars-support-system", { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -18,6 +19,7 @@ app.use("/", indexRoutes);
 app.use("/ci", ciRoutes);
 app.use("/pd", pdRoutes);
 app.use("/eval", evalRoutes);
+app.use("/result", resultRoutes);
 
 app.listen(process.env.PORT | 3000, function () {
     console.log('Server starting on port 3000');
