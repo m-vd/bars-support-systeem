@@ -1,0 +1,10 @@
+include partials/header.pug
+
+each role in all
+    p #{role.name}
+    each ci in role.criticalIndicator
+        p #{ci.description}
+        each pd in ci.performanceDimension
+            p #{pd.description}
+
+include partials/footer.pug

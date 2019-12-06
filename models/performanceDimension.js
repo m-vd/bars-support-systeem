@@ -4,4 +4,4 @@ const performanceDimensionSchema = new mongoose.Schema({
     description: String,
 });
 
-module.exports = mongoose.model("performanceDimension", performanceDimensionSchema); 
+module.exports = mongoose.model("PerformanceDimension", performanceDimensionSchema); 

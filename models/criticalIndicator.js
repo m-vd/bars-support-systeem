@@ -8,4 +8,4 @@ const criticalIndicatorSchema = new mongoose.Schema({
     }]
 });
 
-module.exports = mongoose.model("criticalIndicator", criticalIndicatorSchema); 
+module.exports = mongoose.model("CriticalIndicator", criticalIndicatorSchema); 

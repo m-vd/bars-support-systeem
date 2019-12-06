@@ -1,0 +1,15 @@
+include partials/header.pug
+
+.container.mt-5
+    form(action="/pd" method="POST")
+        .form-group
+            select.form-control(name="ci" required)
+                each ci in cis
+                    option(value=ci.description) #{ci.description}
+        .form-group
+            input.form-control(type="text" name="newPD" placeholder="add new performance dimension" required)
+        
+        button.btn.btn-primary(type="submit") Submit
+
+
+include partials/footer.pug

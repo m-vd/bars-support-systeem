@@ -4,14 +4,14 @@ include partials/header.pug
 .container.mt-5
     form(action="/ci" method="POST")
         .form-group
-            select#select-role.form-control(name="role")
+            select#select-role.form-control(name="role" required)
                 each role in roles
                     option(value=role.name) #{role.name}
                 option ... add new role
-        #add-role.form-group
+        #add-role.form-group()
 
         .form-group
-            input.form-control(type="text" name="newCI" placeholder="add new CI")
+            input.form-control(type="text" name="newCI" placeholder="add new CI" required)
         button.btn.btn-primary(type="submit") Submit
 
 script.
