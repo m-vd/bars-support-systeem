@@ -16,7 +16,7 @@ include partials/header.pug
                 each ci in role.criticalIndicator
                     each pd in ci.performanceDimension
                         tr(class = "tr-" + role.name.replace(/ /g,''))
-                            if (pd.arrayOfScale.length > 1)
+                            if (pd.arrayOfScale.length > 0)
                                 td #{ci.description} 
                                 td #{pd.description}
                                 td #{math.round(math.std(pd.arrayOfScale), 3)}
@@ -24,9 +24,7 @@ include partials/header.pug
                                     td.alert.alert-danger not accepted
                                 else 
                                     td.alert.alert-success accepted
-
-
-                                
+                          
             
 script.
     $("#select-role").change(function() {

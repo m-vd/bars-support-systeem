@@ -1,0 +1,30 @@
+include partials/header.pug 
+
+.container.mt-5
+    table.table
+        select#select-role.form-control.form-group 
+            each el in all
+                option(value=el.role.replace(/ /g,'')) #{el.role}
+        thead
+            tr.theader
+                th Critical Indicator
+                th Performance Dimension
+                th Rating
+        tbody
+            each el in all 
+                each appraisal in el.appraisal
+                    each pd in appraisal.performanceDimension
+                        tr(class = "tr-" + el.role.replace(/ /g,''))
+                            td #{appraisal.criticalIndicator} 
+                            td #{pd.description}
+                            td #{pd.scale}
+            
+script.
+    $("#select-role").change(function() {
+        selectedRole = ($("#select-role option:selected").val());
+        $('tr').not('.tr-' + selectedRole).css('display','none');
+        $('.tr-' + selectedRole).css('display','');
+        $('.theader').css('display','');
+    }).trigger("change")
+
+include partials/footer.pug 

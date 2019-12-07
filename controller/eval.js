@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const Role = require('../models/role');
-const CriticalIndicator = require('../models/criticalIndicator');
-const PerformanceDimension = require('../models/performanceDimension');
 
 
 router.get("/", (req, res) => {
@@ -19,7 +17,6 @@ router.get("/", (req, res) => {
             if (err) {
                 console.log(err);
             } else {
-                console.log(allRoles);
                 res.render('evaluate', { all: allRoles });
             }
         })
