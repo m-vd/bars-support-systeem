@@ -1,6 +1,6 @@
 {
   "name": "bars-support-system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a support system to compile bars-based performance appraisal. Done for the completion of ii4021-decision support system course.",
   "main": "app.js",
   "scripts": {
