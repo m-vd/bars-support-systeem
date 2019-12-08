@@ -16,7 +16,7 @@ include partials/header.pug
                 each ci in role.criticalIndicator
                     each pd in ci.performanceDimension
                         tr(class = "tr-" + role.name.replace(/ /g,''))
-                            if (pd.arrayOfScale.length > 0)
+                            if (pd.arrayOfScale.length > 1)
                                 td #{ci.description} 
                                 td #{pd.description}
                                 td #{math.round(math.std(pd.arrayOfScale), 3)}

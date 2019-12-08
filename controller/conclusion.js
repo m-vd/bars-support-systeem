@@ -34,12 +34,12 @@ router.get("/", (req, res) => {
                                 //criticalIndicator.performanceDimension.forEach
                                 for (let k = 0; k < criticalIndicator.performanceDimension.length; k++){
                                     currentElement = criticalIndicator.performanceDimension[k]
-                                    if (currentElement.arrayOfScale.length > 0){
+                                    if (currentElement.arrayOfScale.length > 1){
                                         value = math.round(math.std(currentElement.arrayOfScale), 3)
                                         if (value < 1.5) {
                                             let toBeAdded = {
                                                 description: currentElement.description,
-                                                scale: math.round(math.mean(currentElement.arrayOfScale), 2)
+                                                scale: math.round(math.mean(currentElement.arrayOfScale))
                                             }
                                             
                                             pd.push(toBeAdded)
@@ -47,6 +47,7 @@ router.get("/", (req, res) => {
                                     }
                                 }
 
+                                // sort by value from high to low
                                 pd.sort((a,b) => (a.scale < b.scale) ? 1 : -1)
 
                                 if (pd.length > 0) {

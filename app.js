@@ -10,7 +10,7 @@ const evalRoutes = require('./controller/eval');
 const resultRoutes = require('./controller/result');
 const conclusionRoutes = require('./controller/conclusion');
 
-mongoose.connect(process.env.database_uri || "mongodb://localhost/bars-support-system", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://user:user1234@ds229312.mlab.com:29312/bars-support-system' || "mongodb://localhost/bars-support-system", { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({ extended: true }));
